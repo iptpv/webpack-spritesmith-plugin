@@ -1,0 +1,15 @@
+{
+  "name": "webpack-spritesmith-plugin",
+  "version": "0.0.1",
+  "description": "Generate sprites and css",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "spritesheet-templates": "^10.1.4",
+    "spritesmith": "^3.1.0"
+  }
+}
