@@ -1,6 +1,6 @@
 {
   "name": "webpack-spritesmith-plugin",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Generate sprites and css",
   "main": "index.js",
   "scripts": {

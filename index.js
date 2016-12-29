@@ -18,7 +18,7 @@ function SpritesmithPlugin(options) {
 
 SpritesmithPlugin.prototype.apply = function(compiler) {
   var self = this;
-  compiler.plugin('emit', function(compilation, callback){
+  compiler.plugin('compile', function(compilation, callback){
     fs.readdir(self.imagesSrc, function(err, items) {
       var files = items.filter(function(item) {
         return path.extname(item) === self.spriteExt;
