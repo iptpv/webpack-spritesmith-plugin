@@ -2,6 +2,7 @@ var spritesmith = require('spritesmith');
 var templater = require('spritesheet-templates');
 var path = require('path');
 var fs = require('fs');
+var filendir = require('filendir');
 
 function SpritesmithPlugin(options) {
   this.imagesSrc = options.src;
@@ -18,7 +19,7 @@ function SpritesmithPlugin(options) {
 
 SpritesmithPlugin.prototype.apply = function(compiler) {
   var self = this;
-  compiler.plugin('compile', function(compilation, callback){
+  compiler.plugin('compile', function() {
     fs.readdir(self.imagesSrc, function(err, items) {
       var files = items.filter(function(item) {
         return path.extname(item) === self.spriteExt;
@@ -26,7 +27,7 @@ SpritesmithPlugin.prototype.apply = function(compiler) {
           return self.imagesSrc + '/' + item;
       });
       spritesmith.run(Object.assign({src: files}, self.spritesmithConfig), function (err, result) {
-        fs.writeFileSync(self.targetImage, result.image);
+        filendir.writeFileSync(self.targetImage, result.image);
         var css = templater({
           sprites: Object.keys(result.coordinates).map(function(key) {
             return {
@@ -43,8 +44,7 @@ SpritesmithPlugin.prototype.apply = function(compiler) {
             height: result.properties.height
           }
         }, self.template);
-        fs.writeFileSync(self.targetCss, css);
-        callback();
+        filendir.writeFileSync(self.targetCss, css);
       });
     });
   });
