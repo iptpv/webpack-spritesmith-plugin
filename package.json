@@ -8,6 +8,10 @@
   },
   "author": "",
   "license": "ISC",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/iptpv/webpack-spritesmith-plugin.git"
+  },
   "dependencies": {
     "filendir": "^1.0.0",
     "spritesheet-templates": "^10.1.4",
